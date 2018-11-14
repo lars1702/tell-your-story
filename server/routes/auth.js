@@ -3,9 +3,8 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 
-// Bcrypt to encrypt passwords
-const bcrypt = require("bcrypt");
-const bcryptSalt = 10;
+const bcryptjs = require("bcryptjs");
+const bcryptjsSalt = 10;
 
 router.post("/signup", (req, res, next) => {
   const { username, password } = req.body;
@@ -19,8 +18,8 @@ router.post("/signup", (req, res, next) => {
         res.status(401).json({ message: "The username already exists" });
         return;
       }
-      const salt = bcrypt.genSaltSync(bcryptSalt);
-      const hashPass = bcrypt.hashSync(password, salt);
+      const salt = bcryptjs.genSaltSync(bcryptjsSalt);
+      const hashPass = bcryptjs.hashSync(password, salt);
       const newUser = new User({ username, password: hashPass });
       return newUser.save()
     })

@@ -67,8 +67,6 @@ export default {
       .catch(errHandler)
   },
 
-
-
   addPicture(file) {
     const formData = new FormData()
     formData.append("picture", file)

@@ -1,24 +1,21 @@
-// Seeds file that remove all users and create 2 new users
 
-// To execute this seed, run from the root of the project
-// $ node bin/seeds.js
-
+require('dotenv').config();
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 const User = require("../models/User");
 
-const bcryptSalt = 10;
+const bcryptjsSalt = 10;
 
 require('../configs/database')
 
 let users = [
   {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    username: "Lars",
+    password: bcryptjs.hashSync("Lars", bcryptjs.genSaltSync(bcryptjsSalt)),
   },
   {
     username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    password: bcryptjs.hashSync("bob", bcryptjs.genSaltSync(bcryptjsSalt)),
   }
 ]
 
@@ -31,7 +28,6 @@ User.deleteMany()
     console.log(usersCreated.map(u => u._id));
   })
   .then(() => {
-    // Close properly the connection to Mongoose
     mongoose.disconnect()
   })
   .catch(err => {

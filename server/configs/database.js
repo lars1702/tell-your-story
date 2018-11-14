@@ -1,7 +1,10 @@
+require('dotenv').config({ path: __dirname + '/../.env' }); //dont forget to set the path when using dotenv
 const mongoose = require('mongoose');
 
-// Don't forget to set "MONGODB_URI" in ~/server/.env
-const uri = process.env.MONGODB_URI || `mongodb://localhost/please-set-process-env-mongodb-uri`;
+const dbName = `localhost/tell-your-story-fallback`
+const uri = `mongodb://${process.env.MONGODB_URI || dbName}`;
+console.log("SERVER:", process.env.MONGODB_URI, "at port:", process.env.PORT)
+
 
 mongoose
   .connect(uri, { useNewUrlParser: true })
