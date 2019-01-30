@@ -1,12 +1,13 @@
-const express = require('express');
+const express = require('express')
 const { isLoggedIn } = require('../middlewares')
-const router = express.Router();
 
-router.get('/secret', isLoggedIn, (req, res, next) => {
+const router = express.Router()
+
+router.get('/secret', isLoggedIn, (req, res) => {
   res.json({
     secret: 42,
-    user: req.user
-  });
-});
+    user: req.user,
+  })
+})
 
-module.exports = router;
+module.exports = router

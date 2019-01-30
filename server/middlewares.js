@@ -3,6 +3,4 @@ function isLoggedIn(req, res, next) {
   else next({ status: 403, message: 'Unauthorized' })
 }
 
-module.exports = {
-  isLoggedIn
-}
+module.exports = { isLoggedIn }

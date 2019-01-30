@@ -1,26 +1,14 @@
-import React, { Component } from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
-import Home from './pages/Home';
-import Countries from './pages/Countries';
-import AddCountry from './pages/AddCountry';
-import Secret from './pages/Secret';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import api from '../api';
+import React, { PureComponent } from 'react'
+import { Route, NavLink, Switch } from 'react-router-dom'
+import Home from './pages/Home'
+import Countries from './pages/Countries'
+import AddCountry from './pages/AddCountry'
+import Secret from './pages/Secret'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import api from '../api'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      countries: []
-    }
-    // api.loadUser();
-  }
-
-  handleLogoutClick(e) {
-    api.logout()
-  }
-
+class App extends PureComponent {
   render() {
     return (
       <div className="App">
@@ -30,7 +18,7 @@ class App extends Component {
           <NavLink to="/add-country">Add country</NavLink>
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-          {api.isLoggedIn() && <NavLink to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</NavLink>}
+          {api.isLoggedIn() && <NavLink to="/" onClick={() => api.logout()}>Logout</NavLink>}
           <NavLink to="/secret">Secret</NavLink>
         </header>
         <Switch>
@@ -43,8 +31,8 @@ class App extends Component {
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

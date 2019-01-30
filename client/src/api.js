@@ -2,20 +2,19 @@ import axios from 'axios'
 
 const service = axios.create({
   baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5000/api',
-  withCredentials: true
+  withCredentials: true,
 })
 
-const errHandler = err => {
+const errHandler = (err) => {
   console.error(err)
   if (err.response && err.response.data) {
-    console.error("API response", err.response.data)
+    console.error('API response', err.response.data)
   }
   throw err
 }
 
 export default {
-  service: service,
-
+  service,
   isLoggedIn() {
     return localStorage.getItem('user') != null
   },
@@ -33,7 +32,7 @@ export default {
         username,
         password,
       })
-      .then(res => {
+      .then((res) => {
         localStorage.setItem('user', JSON.stringify(res.data))
         return res.data
       })
@@ -69,7 +68,7 @@ export default {
 
   addPicture(file) {
     const formData = new FormData()
-    formData.append("picture", file)
+    formData.append('picture', file)
     return service
       .post('/endpoint/to/add/a/picture', formData, {
         headers: {
