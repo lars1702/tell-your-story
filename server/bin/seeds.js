@@ -5,12 +5,14 @@ const bcryptjs = require("bcryptjs")
 const User = require("../models/User")
 
 const bcryptjsSalt = 10
-
 require('../configs/database')
+
+// find the database name, get the length of the database. Or of the collection.
+// db --> collections --> BSON (not JSON) documents --> {field : value}
 
 const users = [
   {
-    username: "Lars",
+    username: "anon",
     password: bcryptjs.hashSync("Lars", bcryptjs.genSaltSync(bcryptjsSalt)),
   },
   {
