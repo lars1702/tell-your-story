@@ -1,5 +1,6 @@
 .DS_Store
-node_modules
+/node_modules
+**/node_modules
 
 # Environment Variables should NEVER be published
 .env
@@ -18,3 +19,6 @@ yarn-error.log*
 # Temp
 client-old
 server-old
+/.vscode
+/vscode
+*.tmp
