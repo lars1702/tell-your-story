@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import api from '../../api'
 
 
-class AddCountry extends Component {
+class WritePost extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -32,7 +32,7 @@ class AddCountry extends Component {
       area,
       description,
     }
-    api.postCountries(data)
+    api.postUserPosts(data)
       .then(() => {
         console.warn('SUCCESS!')
         this.setState({
@@ -40,7 +40,7 @@ class AddCountry extends Component {
           capitals: "",
           area: "",
           description: "",
-          message: `Your country '${name}' has been created`,
+          message: `Your post '${name}' has been published.`,
         })
         setTimeout(() => {
           this.setState({
@@ -54,8 +54,8 @@ class AddCountry extends Component {
   render() {
     const { name, description, capitals, area, message } = this.state
     return (
-      <div className="AddCountry">
-        <h2>Add country</h2>
+      <div className="write-post">
+        <h2>Write a post</h2>
         <Form>
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <Label for="exampleUsername" className="mr-sm-2">Name</Label>
@@ -73,7 +73,7 @@ class AddCountry extends Component {
             <Label for="exampleUsername" className="mr-sm-2">Description</Label>
             <Input type="text" name="Description" id="Description" placeholder="Description" value={description} onChange={e => this.handleInputChange("description", e)} />
           </FormGroup>
-          <Button onClick={e => this.handleClick(e)}>Create country</Button>
+          <Button onClick={e => this.handleClick(e)}>Publish</Button>
           {message && <div className="info">{message}</div>}
         </Form>
       </div>
@@ -81,4 +81,4 @@ class AddCountry extends Component {
   }
 }
 
-export default AddCountry
+export default WritePost

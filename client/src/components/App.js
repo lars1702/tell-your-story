@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { Route, NavLink, Switch } from 'react-router-dom'
 import Home from './pages/Home'
-import Countries from './pages/Countries'
-import AddCountry from './pages/AddCountry'
+import UserPosts from './pages/UserPosts'
+import WritePost from './pages/WritePost'
 import Secret from './pages/Secret'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -14,8 +14,8 @@ class App extends PureComponent {
       <div className="App">
         <header className="App-header">
           <NavLink to="/" exact>Home</NavLink>
-          <NavLink to="/countries">Countries</NavLink>
-          <NavLink to="/add-country">Add country</NavLink>
+          <NavLink to="/user-posts">Posts</NavLink>
+          <NavLink to="/write-post">Write post</NavLink>
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
           {api.isLoggedIn() && <NavLink to="/" onClick={() => api.logout()}>Logout</NavLink>}
@@ -23,8 +23,8 @@ class App extends PureComponent {
         </header>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/countries" component={Countries} />
-          <Route path="/add-country" component={AddCountry} />
+          <Route path="/posts" component={UserPosts} />
+          <Route path="/write-post" component={WritePost} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/secret" component={Secret} />

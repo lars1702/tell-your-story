@@ -45,16 +45,16 @@ export default {
       .get('/logout')
   },
 
-  getCountries() {
+  getUserPosts() {
     return service
-      .get('/countries')
+      .get('/user-posts')
       .then(res => res.data)
       .catch(errHandler)
   },
 
-  postCountries(data) {
+  postUserPosts(data) {
     return service
-      .post('/countries', data)
+      .post('/user-posts', data)
       .then(res => res.data)
       .catch(errHandler)
   },
