@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const userSchema = new Schema({ // instance
-  userNumber: Number, // just an anonymous number?
+  userNumber: "",
   password: String,
 },
 {

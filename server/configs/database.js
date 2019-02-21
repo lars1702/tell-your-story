@@ -1,5 +1,6 @@
 
 const dotenv = require('dotenv')
+
 console.log("2 --->  ", __dirname)
 dotenv.config({ path: __dirname.concat('\\..\\.env') }) // dont forget to set the path when using dotenv
 const mongoose = require('mongoose')

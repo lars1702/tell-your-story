@@ -1,30 +1,29 @@
-
 require('dotenv').config()
 const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs")
 const User = require("../models/User")
+const { generateNumber } = require("../utils.js")
 
 const salt = bcrypt.genSaltSync(10)
-const generateNumber = () => {
-  let ran = Math.floor(Math.random() * 1000000)
-  console.log('DEBUG - ran, ran.toString(10).length', ran, ran.toString(10).length)
-  return ran.toString(10)
-  return ran.toString(10).length === 7
-    ? ran
-    : generateNumber()
-}
 
 require('../configs/database')
-
-mongoose.connect(process.env.MONGODB_URI)
+console.log('DEBUG - generateNumber()', generateNumber())
+mongoose
+  .connect("mongodb://localhost/tell-your-story", { useNewUrlParser: true })
+  .then((server) => {
+    console.warn(`Connected to Mongo! Database name: "${server.connections[0].name}"`)
+  })
+  .catch((err) => {
+    console.error('Error connecting to mongo', err)
+  })
 
 const users = [
   {
-    userNumber: bcrypt.hashSync(generateNumber(), salt),
+    userNumber: generateNumber(),
     password: bcrypt.hashSync("Lars", salt),
   },
   {
-    userNumber: bcrypt.hashSync(generateNumber(), salt),
+    userNumber: generateNumber(),
     password: bcrypt.hashSync("bob", salt),
   },
 ]
@@ -33,11 +32,9 @@ User.deleteMany()
   .then(() => User.create(users))
   .then((userCollection) => {
     console.warn(`${userCollection.length} users created with the following id:`)
-    console.warn(userCollection.map(user => user._id))
+    console.warn(userCollection.map(user => user))
   })
-  .then(() => {
-    mongoose.disconnect()
-  })
+  .then(() => mongoose.disconnect())
   .catch((err) => {
     mongoose.disconnect()
     throw err
