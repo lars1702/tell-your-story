@@ -5,9 +5,8 @@ const User = require("../models/User")
 const { generateNumber } = require("../utils.js")
 
 const salt = bcrypt.genSaltSync(10)
-
 require('../configs/database')
-console.log('DEBUG - generateNumber()', generateNumber())
+
 mongoose
   .connect("mongodb://localhost/tell-your-story", { useNewUrlParser: true })
   .then((server) => {
@@ -28,10 +27,14 @@ const users = [
   },
 ]
 
-User.deleteMany()
-  .then(() => User.create(users))
+// refactor to a promise using async await somehow?
+
+const blergh = new Promise(() => {
+  User.deleteMany()
+  .then(() => await User.create(users))
   .then((userCollection) => {
-    console.warn(`${userCollection.length} users created with the following id:`)
+    console.warn(` users created: ${userCollection}`)
+    // console.warn(`${userCollection.length} users created with the following id:`)
     console.warn(userCollection.map(user => user))
   })
   .then(() => mongoose.disconnect())
@@ -39,3 +42,4 @@ User.deleteMany()
     mongoose.disconnect()
     throw err
   })
+})
