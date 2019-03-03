@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Route, NavLink, Switch } from 'react-router-dom'
-import Home from './pages/Home'
+import Home from './pages/home/Home'
 import UserPosts from './pages/UserPosts'
 import WritePost from './pages/WritePost'
 import Secret from './pages/Secret'
