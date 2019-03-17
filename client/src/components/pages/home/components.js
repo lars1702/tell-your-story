@@ -33,3 +33,10 @@ export const BigText = styled.h2`
   height: min-content;
   z-index: 1;
 `
+
+export const TextSlider = styled.h2`
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 44px;
+  height: min-content;
+  z-index: 1;
+`

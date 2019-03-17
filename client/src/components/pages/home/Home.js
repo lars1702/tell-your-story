@@ -2,14 +2,25 @@ import React, { Component } from 'react'
 import {
   Header,
   BigText,
+  TextSlider,
 } from "./components"
 
 class Home extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      slider: [
+        "Click here to write you story.",
+        "Click here to get peace of mind.",
+        "Click here to help stop sexual harrasment.",
+      ]
+    })
+  }
   render() {
     return (
       <div className="Home">
@@ -17,11 +28,14 @@ class Home extends Component {
           <BigText>Inspiring tagline or quote about opening up</BigText>
         </Header>
         <Header>
-          <BigText> Upsell statement:
-            "Click here to write you story.
-            Click here to get peace of mind.
-            Click here to help aid in the attempt to stop sexual harrasment."
-          </BigText>
+          <TextSlider>
+            {this.state.slider &&
+            this.state.slider.map((e, i) => {
+              return setInterval(() => {
+                return "This should show"
+              }, 3000)
+            })}
+          </TextSlider>
         </Header>
       </div>
     )
