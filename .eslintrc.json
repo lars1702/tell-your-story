@@ -1,9 +1,11 @@
 {
-    "extends": "airbnb",
+    "extends": "react",
     "rules": {
         "react/prop-types": 0,
         "quotes": 0,
         "no-underscore-dangle": 0,
+        "no-unused-vars":"warn",
+        "max-len":"off",
         "react/prefer-stateless-function": 0,
         "react/jsx-filename-extension": [
             1,
@@ -14,6 +16,8 @@
                 ]
             }
         ],
+        "indent": ["error", 2],
+        "space-before-function-paren": "off",
         "object-curly-newline": [
             "error",
             {
@@ -47,6 +51,10 @@
         "localStorage": true,
         "fetch": true,
         "FormData": true,
-        "document": true
+        "document": true,
+        "setTimeout": true,
+        "clearTimeout": true,
+        "setInterval": true,
+        "clearInterval": true
     }
 }

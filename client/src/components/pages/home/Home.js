@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { NavBar } from "./NavBar"
+import {
+  Header,
+  BigText,
+} from "./components"
 
 class Home extends Component {
   // constructor(props) {
@@ -10,8 +13,16 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <NavBar />
-        <h2>Home</h2>
+        <Header>
+          <BigText>Inspiring tagline or quote about opening up</BigText>
+        </Header>
+        <Header>
+          <BigText> Upsell statement:
+            "Click here to write you story.
+            Click here to get peace of mind.
+            Click here to help aid in the attempt to stop sexual harrasment."
+          </BigText>
+        </Header>
       </div>
     )
   }
