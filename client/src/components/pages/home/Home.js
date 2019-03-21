@@ -9,6 +9,7 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      slider: []
     }
   }
 
@@ -29,12 +30,13 @@ class Home extends Component {
         </Header>
         <Header>
           <TextSlider>
-            {this.state.slider &&
-            this.state.slider.map((e, i) => {
-              return setInterval(() => {
-                return "This should show"
-              }, 3000)
-            })}
+            {this.state.slider?.length &&
+              this.state.slider.map((e, i) => {
+                return setInterval(() => {
+                  return "This should show"
+                }, 3000)
+              })
+            }
           </TextSlider>
         </Header>
       </div>
