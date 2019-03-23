@@ -1,4 +1,10 @@
 import styled, { keyframes } from "styled-components"
+import React from "react"
+
+export const Page = styled.div`
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+`
 
 const spinner = keyframes`
   0% {
@@ -25,17 +31,16 @@ export const Header = styled.div`
   background-repeat: no-repeat;
   justify-content: center;
   background-size: cover;
-  border: 1px solid grey;
   align-content: center;
   align-items: center;
   position: relative;
   display: flex;
   height: 600px;
   &::after {
-    content: "";
     background-color: white;
     position: absolute;
     opacity: 0.5;
+    content: "";
     bottom: 0;
     right: 0;
     left: 0;
@@ -46,26 +51,77 @@ export const Header = styled.div`
   }
 `
 
+export const Section = styled.div`
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  height: 600px;
+  &::after {
+    background-color: white;
+    position: absolute;
+    opacity: 0.3;
+    content: "";
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+  @media (max-width: 800px) {
+    height: 300px;
+  }
+`
+export const Section1 = styled(Section)`
+  background-image: url("/flower_evan-kirby.jpg");
+  background-position: center 20%;
+  flex-direction: column;
+  align-items: center;
+`
+
 export const BigText = styled.h2`
   font-family: 'Fira Sans', sans-serif;
-  font-size: 44px;
   height: min-content;
-  z-index: 1;
-`
-
-export const TextSlider = styled.h2`
-  font-family: 'Fira Sans', sans-serif;
   font-size: 44px;
-  animation: ${spinner} 4s cubic-bezier(0.550, 0.055, 0.675, 0.190) 4s infinite both;
+  z-index: 1;
 `
 
-export const SliderBox = styled.div`
+export const SlidingText = styled.h2`
+  animation: ${spinner} 4s ease-in 0s infinite both;
+  font-family: 'Courier New';
+  align-items: flex-end;
+  font-weight: 500;
+  font-size: 34px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid red;
-  z-index: 1;
-  height: 150px;
-  overflow-y: hidden;
-  width: 100%;
+  color: gold;
+  padding: 0;
+  margin: 0;
 `
+
+export const StaticText = styled.h2`
+  font-family: 'Fira Sans', sans-serif;
+  align-items: flex-end;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 40px;
+  display: flex;
+  padding: 0;
+  margin: 0;
+`
+
+export const SliderContainer = styled.div`
+  height: fit-content;
+  overflow-y: hidden;
+  display: flex;
+  width: 900px;
+  z-index: 1;
+`
+
+export const Slider = ({ children }) => {
+  return (
+    <SliderContainer>
+      <StaticText>Click here to&nbsp;</StaticText>
+      <SlidingText>{children}</SlidingText>
+    </SliderContainer>
+  )
+}

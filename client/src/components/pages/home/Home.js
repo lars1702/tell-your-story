@@ -1,28 +1,28 @@
 import React, { Component } from 'react'
 import {
   Header,
+  Section1,
   BigText,
-  TextSlider,
-  SliderBox,
+  Slider,
+  Page,
 } from "./components"
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sliderCounter: 0,
+      sliderCounter: 1,
       sliderTexts: [],
-      currentSliderText: "Click here to write you story."
+      currentSliderText: "write you story."
     }
-    
   }
 
   componentDidMount() {
     this.setState({
       sliderTexts: [
-        "Click here to write you story.",
-        "Click here to get peace of mind.",
-        "Click here to help stop sexual harrasment.",
+        "write you story.",
+        "get peace of mind.",
+        "help end sexual harrasment.",
       ]
     })
     this.interval = setInterval(() => {
@@ -34,22 +34,18 @@ class Home extends Component {
   }
 
   render() {
-    const { sliderCounter, currentSliderText } = this.state
-    console.log('DEBUG - sliderCounter', sliderCounter)
-    console.log('DEBUG - currentSliderText', currentSliderText)
+    const { currentSliderText } = this.state
     return (
-      <div className="Home">
+      <Page className="Home">
         <Header>
           <BigText>Inspiring tagline or quote about opening up</BigText>
         </Header>
-        <Header>
-          <SliderBox>
-            <TextSlider>
-              {this.state.currentSliderText}
-            </TextSlider>
-          </SliderBox>
-        </Header>
-      </div>
+        <Section1>
+          <p>The tyranny of the patriarchy</p>
+          <p>has gone on for too long</p>
+          <Slider>{currentSliderText}</Slider>
+        </Section1>
+      </Page>
     )
   }
 }
