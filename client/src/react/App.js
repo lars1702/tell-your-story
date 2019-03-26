@@ -6,7 +6,7 @@ import WritePost from './pages/WritePost'
 import Secret from './pages/Secret'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import NavBar from "./pages/NavBar"
+import NavBar from "./components/NavBar"
 
 class App extends PureComponent {
   render() {
