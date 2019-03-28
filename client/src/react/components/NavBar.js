@@ -38,7 +38,7 @@ export default class Example extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="d-flex align-items-center">
-                <NavLink className="text-light" to="/user-posts">Posts</NavLink>
+                <NavLink className="text-light" to="/posts">Posts</NavLink>
               </NavItem>
               <NavItem className="d-flex align-items-center mx-3">
                 <NavLink className="text-light" to="/write-post">Write post</NavLink>
@@ -47,8 +47,7 @@ export default class Example extends React.Component {
                 <DropdownToggle className="text-light" nav caret>
                   {api.isLoggedIn() ?
                     "Account" :
-                    "Login Options"
-                  }
+                    "Login Options"}
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
